@@ -78,3 +78,38 @@ Posts about tool reuse, implementation, or benchmark release (Topic 1) receive h
 
 **Method**  
 We built a linear regression model using:
+sentiment_feature = sentiment_polarity × confidence
+
+Then we calculated residuals between predicted and actual scores.
+
+**Outliers Identified**
+
+| Title                                | Score | Sentiment | Predicted | Residual |
+|--------------------------------------|-------|-----------|-----------|----------|
+| Benchmarking gender bias             | 4     | POSITIVE  | 24.9      | -20.9    |
+| YFlow framework post                 | 0     | POSITIVE  | 26.5      | -26.4    |
+
+**Conclusion**  
+Some posts that are objectively positive still underperform. Possible reasons include:
+- Niche or highly technical content
+- Poor timing or lack of visibility
+- Misalignment with current community interests
+
+---
+
+## Technologies Used
+
+- Python 3.x
+- `praw` – Reddit API
+- `transformers` – Hugging Face sentiment analysis
+- `spaCy` – POS tagging
+- `scikit-learn` – TF-IDF, regression, LDA
+- `matplotlib`, `seaborn` – Visualization
+
+---
+
+## Future Work
+
+- Expand to include Reddit comments (not just post titles)
+- Add fine-tuned emotion classifiers (beyond binary sentiment)
+- Integrate graph-based community interaction analysis (e.g., NetworkX)
